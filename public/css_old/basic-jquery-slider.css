@@ -1,0 +1,190 @@
+.bjqs {
+}
+
+#slideshow {
+	position:relative;
+	width:980px;
+	height:300px;
+	float:none;
+	display:block;
+	border-image:initial;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.199219) 0px 1px 5px;
+	box-shadow:rgba(0, 0, 0, 0.199219) 0px 1px 5px;
+	-o-box-shadow:rgba(0, 0, 0, 0.199219) 0px 1px 5px;
+	-ms-box-shadow:rgba(0, 0, 0, 0.199219) 0px 1px 5px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.199219) 0px 1px 5px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+	-o-border-bottom-left-radius:3px;
+	-ms-border-bottom-left-radius:3px;
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+	-o-border-bottom-right-radius:3px;
+	-ms-border-bottom-right-radius:3px;
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+	-o-border-top-left-radius:3px;
+	-ms-border-top-left-radius:3px;
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+	-o-border-top-right-radius:3px;
+	-ms-border-top-right-radius:3px;
+	-moz-border-radius-topright:3px;
+	border-left:1px solid #EEEEEE;
+	border-right:1px solid #DDDDDD;
+	border-top:1px solid rgba(0,183,254,0.50);
+	border-bottom:4px solid #DDDDDD;
+	margin:15px auto 15px auto;
+}
+
+/* Basic jQuery Slider essential styles */
+
+ul.bjqs {
+	position:relative;
+	list-style-type:none;
+	list-style-position:initial;
+	list-style-image:initial;
+	overflow:hidden;
+	display:none;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.292969) 0px 3px 10px;
+	box-shadow:rgba(0, 0, 0, 0.292969) 0px 3px 10px;
+	-o-box-shadow:rgba(0, 0, 0, 0.292969) 0px 3px 10px;
+	-ms-box-shadow:rgba(0, 0, 0, 0.292969) 0px 3px 10px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.292969) 0px 3px 10px;
+	margin:0;
+	padding:0;
+}
+
+li.bjqs-slide {
+	display:none;
+	position:absolute;
+}
+
+ul.bjqs-controls {
+	list-style-type:none;
+	list-style-position:initial;
+	list-style-image:initial;
+	z-index:9999;
+	margin:0;
+	padding:0;
+}
+
+ol.bjqs-markers {
+	list-style-type:none;
+	list-style-position:initial;
+	list-style-image:initial;
+	z-index:9999;
+	margin:0;
+	padding:0;
+}
+
+ol.bjqs-markers li {
+	float:left;
+}
+
+p.bjqs-caption {
+	display:block;
+	width:96%;
+	position:absolute;
+	bottom:0;
+	margin:0;
+	padding:2%;
+}
+
+/* demo styles */
+
+ul.bjqs-controls li a {
+	display:block;
+	position:absolute;
+	background-image:initial;
+	background-repeat-x:no-repeat;
+	background-repeat-y:no-repeat;
+	background-repeat:no-repeat;
+	background-attachment:initial;
+	background-position:initial initial;
+	background-position-x:initial;
+	background-position-y:initial;
+	background-origin:initial;
+	background-clip:initial;
+	background-color:rgba(229,229,229,0.80);
+	color:#464646;
+	text-decoration:none;
+	text-transform:uppercase;
+	padding:5px 10px 5px 10px;
+}
+
+a.bjqs-prev {
+	left:0;
+}
+
+a.bjqs-next {
+	right:0;
+}
+
+p.bjqs-caption {
+	background-repeat-x:no-repeat;
+	background-repeat-y:no-repeat;
+	background-repeat:no-repeat;
+	background-attachment:initial;
+	background-position:initial initial;
+	background-position-x:initial;
+	background-position-y:initial;
+	background-origin:initial;
+	background-clip:initial;
+	color:#7F7F7F;
+	text-align:left;
+	padding-left:150px;
+	text-transform:uppercase;
+	background-color:rgba(221,221,221,0.50);
+}
+
+ol.bjqs-markers {
+	position:absolute;
+	bottom:-20px;
+}
+
+ol.bjqs-markers li {
+	float:left;
+	margin:0px 3px 0px 3px;
+}
+
+ol.bjqs-markers li a {
+	display:block;
+	height:10px;
+	width:10px;
+	overflow:hidden;
+	text-indent:-9999px;
+	background-image:initial;
+	background-repeat-x:no-repeat;
+	background-repeat-y:no-repeat;
+	background-repeat:no-repeat;
+	background-attachment:initial;
+	background-position:initial initial;
+	background-position-x:initial;
+	background-position-y:initial;
+	background-origin:initial;
+	background-clip:initial;
+	background-color:#EDEDED;
+	box-shadow:rgba(0, 0, 0, 0.496094) 0px 0px 50px;
+	-webkit-mask-box-image:inherit;
+	border-image:initial;
+	border:1px solid #FFFFFF;
+}
+
+ol.bjqs-markers li.active-marker a {
+	background-image:initial;
+	background-repeat-x:no-repeat;
+	background-repeat-y:no-repeat;
+	background-repeat:no-repeat;
+	background-attachment:initial;
+	background-position:initial initial;
+	background-position-x:initial;
+	background-position-y:initial;
+	background-origin:initial;
+	background-clip:initial;
+	background-color:rgba(3,187,245,0.50);
+}
+

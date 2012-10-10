@@ -1,0 +1,426 @@
+#classificacoes-label {
+    width: 100px;
+}
+#paginacao a:hover {
+    background-color: #275975;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#paginacao .pgon {
+    background-color: #275975;
+    background-repeat: no-repeat;
+    border: 1px solid #0E2B3D;
+    color: #FFFFFF;
+    font-size: 16px;
+    margin: 0 5px;
+    padding: 3px 5px;
+}
+
+.label_contato, .label_email {
+    font-size: 16px;
+}
+
+.label_submit {
+    visibility: hidden;
+}
+
+.section_contato, .section_email {
+    height: 50px;
+}
+
+#submit-element {
+    left: 60px;
+    position: relative;
+    top: 60px;
+}
+
+.element_contato textarea {
+    height: 120px;
+    width: 300px;
+}
+
+#topoFixo {
+    background-image: url("../imagem/bg_topo_oo.png");
+    background-repeat: repeat-x;
+}
+#topoFixo .central {
+    background-image: url("../imagem/bg_topo.png");
+    background-repeat: no-repeat;
+    height: 314px;
+    margin: auto;
+    width: 1280px;
+}
+#topoFixo .logo {
+    background-image: url("../imagem/logo.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 94px;
+    margin: 25px 0 0 210px;
+    width: 264px;
+}
+#topoFixo .menu {
+    float: left;
+    height: 75px;
+    width: 800px;
+}
+
+.element_contato, .element_email {
+    bottom: 70px;
+    height: 25px;
+    left: 90px;
+    margin-left: 10px;
+    position: relative;
+    width: 300px;
+}
+
+#paginacao .pgoff {
+    display: none;
+}
+
+dl {
+    float: left;
+    margin: 0px 0px 0px 30px;
+    width: 100%;
+}
+
+.element_contato select {
+    height: 25px;
+    font-size: 16px;
+    width: 100px;
+}
+.element_contato input[type="text"] {
+    height: 25px;
+    width: 300px;
+}
+
+#section_footer {
+    color: #464646;
+    display: block;
+    float: none;
+    font-family: unb_officeregular;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: lighter;
+    height: auto;
+    line-height: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-rendering: geometricprecision;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.098);
+    width: 980px;
+}
+.solucao_table tbody tr .element {
+    width: 950px;
+}
+textarea {
+    height: 150px;
+}
+.titular_table tbody tr td {
+    padding: 20px;
+}
+.solucao_table tbody tr td {
+    padding: 20px;
+}
+.servico_table tbody tr td {
+    padding: 20px;
+}
+.depositos_table tbody tr td {
+    padding: 20px;
+}
+#busca input {
+    border-color: rgba(23, 51, 78, 0.15) rgba(23, 51, 78, 0.17) rgba(23, 51, 78, 0.2);
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+    color: #696565;
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 30px;
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    margin-top: 5px;
+    padding-left: 5px;
+    width: 250px;
+}
+#busca_tag {
+    bottom: 0;
+    color: #8A8A8A;
+    float: left;
+    font-family: unb_officeregular;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 2px;
+    width: 700px;
+}
+#header_busca_tag {
+    color: #92918E;
+    float: left;
+    font-family: unb_officeregular;
+    font-size: 10pt;
+    margin-bottom: 0;
+    margin-top: 2px;
+    width: 105px;
+}
+#cite {
+    color: #FFFFFF;
+    float: left;
+    font-size: 14pt;
+    font-style: italic;
+    padding: inherit;
+    text-align: left;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.498);
+}
+.figure_home_artigo {
+    background-image: url("../imagem/titulo_cap.png");
+    background-repeat: no-repeat;
+    float: left;
+    margin-left: 0;
+    margin-top: 0;
+    z-index: 11;
+}
+a {
+    color: #5C5C5C;
+    line-height: 25px;
+    text-decoration: underline;
+}
+a:hover {
+    color: #565656;
+    text-decoration: underline;
+}
+table tbody tr td select {
+    height: 25px;
+    margin: 0 0 35px;
+}
+table tbody tr .element input[type="checkbox"] {
+    margin: 0 20px 50px;
+}
+table tbody tr .element input[type="text"] {
+    height: 25px;
+    margin: 0 0 50px;
+    width: 550px;
+}
+.iMedio, .campo_busca {
+    background-image: url("../imagem/bg_input_m.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 34px;
+    padding: 0 10px;
+    width: 300px;
+}
+label {
+    color: #444444;
+    display: inline-block;
+    height: 70px;
+}
+.textarea {
+    background-image: url("../imagem/bg_textarea_m.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 100px;
+    padding: 7px 0 0 10px;
+    width: 295px;
+}
+.campo_busca {
+}
+button {
+    background-color: #B3B3B3;
+    background-repeat: no-repeat;
+    border: 1px solid #565656;
+    border-radius: 7px 7px 7px 7px;
+    color: #565656;
+    cursor: pointer;
+    float: left;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: normal;
+    margin: 9px 0 0 115px;
+    padding: 6px 15px;
+}
+button:hover {
+    background-color: #565656;
+    background-repeat: no-repeat;
+    border: 1px solid #565656;
+    border-radius: 7px 7px 7px 7px;
+    color: #B3B3B3;
+}
+
+ul.menuTopo {
+    margin: 35px auto;
+    width: 700px;
+}
+ul.menuTopo li {
+    float: left;
+    list-style-type: none;
+}
+ul.menuTopo li.ativo a {
+    color: #062036;
+}
+ul.menuTopo li a {
+    color: #8D8C8B;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    line-height: normal;
+    padding: 5px 15px;
+    text-decoration: none;
+}
+ul.menuTopo li a:hover {
+    color: #062036;
+}
+#geral {
+    margin: 0;
+    position: relative;
+    width: 100%;
+    z-index: 90;
+}
+#geral .central {
+    margin: auto;
+    width: 1280px;
+}
+#quadroConteudo {
+    margin: auto;
+    padding: 0;
+    width: 950px;
+}
+#quadroConteudo .quadroConteudo {
+    float: left;
+    margin: 20px 20px 0 0;
+    min-height: 200px;
+    width: 450px;
+}
+#quadroConteudo .quadroMenu {
+    float: left;
+    width: 200px;
+}
+#quadroConteudo .titulo {
+    color: #062036;
+    font-family: Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}
+#quadroConteudo .subTitulo {
+    color: #275A76;
+    font-family: Arial;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 10px 0;
+    padding: 0;
+}
+#quadroProduto {
+    margin: auto;
+    padding: 0;
+    width: 950px;
+}
+#quadroProduto .quadroConteudo {
+    border-bottom: 1px dashed #62869A;
+    float: left;
+    margin: 20px 0 0;
+    padding: 0 0 10px;
+    width: 100%;
+}
+#quadroProduto .titulo {
+    color: #062036;
+    font-family: Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}
+#quadroProduto a {
+    color: #062036;
+    text-decoration: none;
+}
+#quadroProduto a:hover {
+    color: #104C7E;
+    text-decoration: none;
+}
+#quadroNoticia {
+    margin: auto;
+    padding: 0;
+    width: 1080px;
+}
+#quadroNoticia .quadroNoticia {
+    background-image: url("../imagem/bg_notcias.png");
+    background-repeat: no-repeat;
+    float: left;
+    height: 106px;
+    margin: 0 20px 0 0;
+    padding: 10px;
+    width: 317px;
+}
+#quadroNoticia .titulo {
+    color: #062036;
+    font-family: Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 10px 0;
+    padding: 0;
+}
+#quadroContato {
+    margin: auto;
+    padding: 0;
+    width: 1120px;
+}
+#quadroContato .quadroConteudo {
+    float: left;
+    margin: 20px 6px 0 0;
+    min-height: 200px;
+    width: 420px;
+}
+#quadroContato .quadroTexto {
+    float: left;
+    margin: 100px 0 0;
+    min-height: 350px;
+    width: 280px;
+}
+#paginacao {
+    float: left;
+    margin: auto;
+    width: 748px;
+}
+#paginacao a {
+    background-color: #E0E7EB;
+    background-repeat: no-repeat;
+    border: 1px solid #275975;
+    color: #0E2B3D;
+    font-family: arial;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 10px 0;
+    padding: 3px 5px;
+    text-decoration: none;
+}
+
+.article_contato {
+    height: 380px;
+}

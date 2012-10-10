@@ -1,0 +1,46 @@
+<?php $palavras = new Application_Model_PalavrasChaves;?>
+<!--Título Página de Busca-->
+			<section class="section_home" >
+				<section class="section_home_article" id="article_coluna1" style="" >
+					<header id="titulo_artigo" ><div id="titulo_text" style="margin-left:0; " >Serviços Tecnológicos</div></header>
+
+<?php if (count($this->paginator)): ?>
+	<!--Exibição dos Resultados-->
+				<section class="section_busca_categoria" >
+	<?php foreach($this->paginator as $servico):?>
+	<!--Resultado/Unidade-->
+						<aside class="section_resultado_busca" ><hgroup><header style="width:100%; height:auto; " ><a href="servicos/view/id/<?php echo $servico['id']?>"><h4 id="resultado_busca_titulo" ><?php echo $servico['nome_laboratorio']?></h4></a></header>
+							<nav style="width:100%; " ><h4 id="resultado_busca_tags" >Palavras-chaves: <?php echo $palavras->tags('servicos_tecnologicos',$servico['id']);?></h4></nav></hgroup>
+							<div style="clear:both; padding-top:20px; " ></div>
+							<article id="resultado_busca_texto" ><?php echo $servico['descricao_laboratorio']?></article>
+						</aside>
+	<?php endforeach;?>
+	<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'my_pagination_control.phtml'); ?>
+<?php endif; ?>
+</section>
+				<div style="clear:both; padding-top:20px; " ></div>
+<!--Campo de Noticías-->
+
+				<section id="section_news" ><header id="section_header_news" >
+
+
+				<div style="position:relative; width:auto; height:auto; margin-left:10px; " id="titulo_text" >Últimas Notícias</div></header>
+
+					<aside class="news_footer" id="news_footer_esquerda" 
+style="background-image:url('imagem/noticias/6.jpg'); " ><a href="noticias/view/id/6" target="" name="" ><header id="header_news" style="left:-1px; top:0; " >Professora transforma bituca em papel</header></a></aside>
+					<aside style="width:230px; height:170px; float:left; 
+background-image:url('imagem/noticias/11.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_esquerda" ><a href="noticias/view/id/11" target="" name="" ><header id="header_news" >Feijão-de-corda pode ser 'arma' contra câncer de mama, mostra pesquisa</header></a></aside>
+					<aside style="width:230px; height:170px; 
+background-image:url('imagem/news/news03.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_direita" ><a href="noticias/view/id/3" target="" name="" ><header id="header_news" >Software ajuda deficientes intelectuais a ler e usar internet</header></a></aside>
+					<aside class="news_footer" id="news_footer_direita" 
+style="background-image:url('imagem/noticias/7.jpg'); border-bottom:1px solid #7F7F7F; " >
+
+					<a href="noticias/view/id/7" target="" name="" ><header id="header_news" >Estudo sobre Chagas sugere mudança radical em tratamento</header></a></aside>
+				</section>
+
+	</section>
+
+<div style="clear:both; " ></div>
+

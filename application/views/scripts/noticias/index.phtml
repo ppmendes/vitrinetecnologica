@@ -1,0 +1,67 @@
+<?php $Noticia = new Application_Model_Noticias;?>
+<script>
+      $(document).ready(function() {
+
+        $('#slideshow').bjqs({
+          'animation' : 'slide',
+          'width' : 980,
+          'height' : 298
+        });
+
+      });
+    </script>
+<section class="section_home">
+	<div id="slideshow" style="margin-bottom: 45px;">
+		<ul class="bjqs">
+                <li><header class="header_slider">Projeto SEBRAETEC<br>
+                    <small class="legenda_slider">Consultoria Tecnológica em Inovação</small> </header> <a href="noticias/view/id/13"
+                                                                                                                                                          target="" name=""> <img src="imagem/noticias/13.jpg" title=""></li>
+                </a>
+                <li><header class="header_slider">PRODUÇÃO DE BIODIESEL<br>
+                    <small class="legenda_slider">Inovação para a síntese de um catalisador de Lewis ambientalmente correto para ser utilizado na produção de biodiesel</small> </header>
+                    <a href="solucoes/view/id/3" target="" name=""> <img
+                            src="files/solucoes_imagens/3.png" title=""></li>
+                </a>
+
+                <li><header class="header_slider">MARCADORES CELULARES<br>
+                    <small class="legenda_slider">O uso das técnicas fluorescentes</small> </header>
+                    <a href="solucoes/view/id/118" target="" name=""> <img
+                            src="files/solucoes_imagens/118.png" title=""></li>
+                </a>
+            </ul>
+	</div>
+	<?php if (count($this->paginator)): ?>
+	<!-- Notícia -->
+		<?php foreach($this->paginator as $noticia):?>
+			<section class="section_home_article" id="article_coluna1" style="height:256px; ">
+				<hgroup>
+				<figure
+					class="figure_page_notícias"
+					style="background-image:url(imagem/noticias/<?php echo $noticia['id']; ?>.jpg); background-size:auto 100%; background-position:50% 50%; background-position-x:50%; background-position-y:50%; ">
+				</figure>
+				<header
+					class="header_page_notícias"
+					style="width:100%; background-color:#008D4C; padding-bottom:5px; ">
+                <a class="link_noticia" href="noticias/view/id/<?php echo $noticia['id']; ?>" target="" name="" >
+				<div id="titulo_text"
+					style="position: relative; width: auto; height: auto; background-color: rgba(0, 0, 0, 0.00); margin-left: 15px; padding-top: 20px;">
+				<!-- Título -->
+                <?php echo $noticia['nome']; ?>
+				</div>
+                </a>
+				</header>
+				</hgroup>
+				<article
+					class="" id="texto_artigo"
+					style="padding-right:30px; padding-top:10px; padding-bottom:10px; ">
+					<!-- Descrição -->
+					<?php echo $Noticia->resumo($noticia['descricao']); ?>
+					<a href="noticias/view/id/<?php echo $noticia['id']; ?>" target="" name="" >Leia Mais</a>
+				</article>
+				<div style="clear: both;"></div>
+			</section>
+		  <?php endforeach;?>
+        <?php echo $this->paginationControl($this->paginator,'Sliding','my_pagination_control.phtml'); ?>
+	<?php endif; ?>
+</section>
+<div style="clear: both;"></div>

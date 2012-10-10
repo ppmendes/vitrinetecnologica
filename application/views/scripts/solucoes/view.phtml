@@ -1,0 +1,180 @@
+<style type="text/css">
+.section_header_ {
+	height:auto;
+}
+.tooltip { border-bottom: 1px dotted #333; position: relative; cursor: pointer; } 
+.tooltip:hover:after {
+	text-align: left;
+	display: block;
+	width: 400px;
+	content: attr(data-tooltip); 
+	position: absolute;  
+	background: rgba(0, 0, 0, 0.85); 
+	padding: 3px 7px; 
+	color: #FFF; 
+	border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px; 
+	margin-left: 7px; 
+	margin-top: -3px;
+	z-index: 999;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".iframe").fancybox({
+		'width'				: '75%',
+		'height'			: '77%',
+		'autoScale'			: false,
+		'transitionIn'			: 'none',
+		'transitionOut'			: 'none',
+		'type'				: 'iframe'
+	});
+});
+</script>
+<!-- Modalidades  -->
+<?php $modalidades = array();?>
+<?php foreach($this->solucao['modalidades'] as $modalidade): ?>
+
+<?php $modalidades[] = $modalidade['nome']; ?>
+
+<?php endforeach; ?>
+
+<!-- Classificações -->
+<?php $classificacoes = array();?>
+<?php foreach($this->solucao['classificacoes'] as $classificacao): ?>
+
+<?php $classificacoes[] = $classificacao['nome']; ?>
+
+<?php endforeach; ?>
+<section class="section_home" >
+		<section class="section_home_article" id="article_coluna1" style="" >
+			<hgroup>
+<!--Título do Artigo/Documento-->
+				<header class="section_header_" style="position:relative; float:none; margin-left:auto; margin-right:auto; display:block; -webkit-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; box-shadow:rgba(0, 0, 0, 0.292969) 0px 1px 3px; -o-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; -ms-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; -moz-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; border-top:1px solid rgba(0,183,254,0.50); border-bottom:1px solid rgba(127,127,127,0.10); " ><div id="titulo_text" style="position:relative; width:auto; height:auto; background-color:rgba(0,0,0,0.00); " >
+                 <?php echo $this->solucao['solucao']['nome']; ?></div></header>
+
+				<nav id="nav_lorem" >
+<!--Fase do Documento
+					<div id="nav_lorem_fase" >
+						<div class="nav_fase" id="nav_fase1" >Fase 1</div>
+						<div class="nav_fase" id="nav_fase2" >Fase 2</div>
+						<div class="nav_fase" id="nav_fase3" >Fase 3</div>
+						<div class="nav_fase" id="nav_fase4" >Fase 4</div>
+-->
+					</div>
+
+<!--Compartilhamento-->
+					<div id="nav_lorem_social" >
+                        <a href="contato/index/assunto/<?php echo base64_encode("[Solução] ".$this->resumo($this->solucao['solucao']['nome'], 100)); ?>">
+                            <div style="background-image:url(imagem/icons/glyphicons_077_headset.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Entre em Contato</p>
+                                </div>
+                            </div></a>
+
+                        <a class="iframe" href="email/index/id/<?php echo $this->solucao['solucao']['id']; ?>/tipo/solucao" target="" name="" >
+                            <div style="background-image:url(imagem/icons/glyphicons_024_indicar.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Enviar para um amigo</p>
+                                </div>
+                            </div></a>
+
+                        <!-- facebook -->
+                        <?php $urlEncurtada = $this->encurtador($this->ServerUrl().$this->url()); ?>
+                        <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $urlEncurtada; ?>">
+                            <div style="background-image:url(imagem/icons/glyphicons_390_facebook.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Compartilhar via Facebook</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- twitter -->
+                        <a target="_blank" href="http://twitter.com/?status=<?php echo $urlEncurtada." "; ?>%23vitrinetecnologica" >
+                            <div style="background-image:url(imagem/icons/glyphicons_391_twitter_t.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Compartilhar via Twitter</p>
+                                </div>
+                            </div></a>
+
+                        <!-- Download do PDF -->
+                        <a href="files/solucoes/<?php echo $this->solucao['solucao']['id']; ?>.pdf" >
+                            <div style="background-image:url(imagem/icons/glyphicons_036_file.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Faça o Download do Arquivo</p>
+                                </div>
+                        </div></a>
+
+                    </div>
+
+			</nav>
+
+            <!--Figura da Página-->
+            <?php if(file_exists('files/solucoes_imagens/'.$this->solucao['solucao']['id'].'.png')):?>
+            <figure class="image_lorem" style="background-image:url(<?php echo '/files/solucoes_imagens/'.$this->solucao['solucao']['id'].'.png'; ?>); " ></figure>
+            <?php else: ?>
+            <figure class="image_lorem" style="background-image:url(imagem/banner/banner4.jpg); " ></figure>
+            <?php endif; ?>
+
+        </hgroup>
+<!--Artigo-->
+<article class="" id="texto_artigo" style="" >
+	<p><b>Fase de Desenvolvimento:</b> <?php echo $this->solucao['fase_desenvolvimento']['nome']; ?></p>
+	<p><b>Descrição do problema:</b> <?php echo $this->solucao['solucao']['descricao_problema']; ?></p>
+	<p><b>Descrição da Tecnologia:</b> <?php echo $this->solucao['solucao']['descricao_tecnologia_solucao']; ?></p>
+	<p><b>Modalidade de Proteção:</b> <?php echo implode(', ',$modalidades) ?></p>
+
+	<p><b>Oportunidades: </b>
+		<?php foreach($this->solucao['oportunidades'] as $oportunidade): ?>
+			<span data-tooltip="<?php echo $oportunidade['descricao']; ?>" class="tooltip"><?php echo $oportunidade['nome']; ?></span>
+		<?php endforeach; ?>
+	</p>
+	
+
+	<p><b>Classificações:</b> <?php echo implode(', ',$classificacoes) ?></p>
+
+	<p><b><?php (count($this->solucao['depositos']->toArray()) > 1) ? $titulo = "Depositos:" : $titulo = "Deposito:"; echo $titulo; ?></b>
+	<?php foreach($this->solucao['depositos'] as $deposito): ?>
+	
+		<?php echo $deposito->numero." "; ?>
+	
+
+	<?php endforeach; ?>
+</p>
+	<?php if(isset($this->solucao['depositos'][0])): ?>
+	    <?php $deposito = $this->solucao['depositos'][0];?>
+	    <?php $titulares = $deposito->findApplication_Model_DbTable_TitularesViaApplication_Model_DbTable_DepositosTitulares();?>
+	    <p><b><?php (count($titulares->toArray()) > 1) ? $titulo = "Titulares:" : $titulo = "Titular:"; echo $titulo; ?> </b>
+
+		<?php foreach($titulares as $titular): ?>
+		    <?php echo $titular->nome.' '; ?>
+		    <?php endforeach; ?>
+	    </p>
+	<?php endif; ?>
+
+</article>
+</section>
+
+<!--Campo de Últimas Notícias-->
+
+<section id="section_news" ><header id="section_header_news" >
+
+
+				<div style="position:relative; width:auto; height:auto; margin-left:10px; " id="titulo_text" >Últimas Notícias</div></header>
+
+					<aside class="news_footer" id="news_footer_esquerda" 
+style="background-image:url('imagem/noticias/6.jpg'); " ><a href="noticias/view/id/6" target="" name="" ><header id="header_news" style="left:-1px; top:0; " >Professora transforma bituca em papel</header></a></aside>
+					<aside style="width:230px; height:170px; float:left; 
+background-image:url('imagem/noticias/11.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_esquerda" ><a href="noticias/view/id/11" target="" name="" ><header id="header_news" >Feijão-de-corda pode ser 'arma' contra câncer de mama, mostra pesquisa</header></a></aside>
+					<aside style="width:230px; height:170px; 
+background-image:url('imagem/news/news03.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_direita" ><a href="noticias/view/id/3" target="" name="" ><header id="header_news" >Software ajuda deficientes intelectuais a ler e usar internet</header></a></aside>
+					<aside class="news_footer" id="news_footer_direita" 
+style="background-image:url('imagem/noticias/7.jpg'); border-bottom:1px solid #7F7F7F; " >
+
+					<a href="noticias/view/id/7" target="" name="" ><header id="header_news" >Estudo sobre Chagas sugere mudança radical em tratamento</header></a></aside>
+				</section>
+		<div style="clear:both; " ></div>
+	</section>
+
+<div style="clear:both; " ></div>

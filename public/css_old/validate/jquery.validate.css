@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+/**********************************
+
+Name: cmxform Styles
+
+***********************************/
+
+/* Form */
+form label.error { width:0px !important; margin:0px;padding:0px; }
+form input.error { border-radius: 7px; border: 1px solid red !important; background-color:#fff !important; }
+form select.error { border-radius: 7px; border: 1px solid red !important; background-color:#fff !important; }
+form textarea.error { border-radius: 7px; border: 1px solid red !important; background-color:#fff !important; }
+

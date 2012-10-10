@@ -1,0 +1,31 @@
+<!-- application/layouts/scripts/layout.phtml -->
+<?php echo $this->doctype(); ?>
+<html>
+	<head>		
+		<?php echo $this->headMeta(); ?>
+        <base href="http://vitrinetecnologica.local/vitrinetecnologica/">
+		<meta name="author" content="ACT" >
+		<meta name="description" content="ACT" >
+		<meta name="keywords" content="ACT" >
+		<title>Vitrine Tecnológica</title>
+		<link href="css/global.css" rel="stylesheet" media="screen" type="text/css" >
+		<link href="css/main.css" rel="stylesheet" media="screen" type="text/css" >
+		<link rel="shortcut icon" href="imagem/favicon.ico" />
+		<script type="text/javascript" src="/js/libs/jquery-1.6.2.min.js" ></script>
+		<script type="text/javascript" src="/js/basic-jquery-slider.js" ></script>
+		<link href="css/basic-jquery-slider.css" rel="stylesheet" media="screen" type="text/css" >
+		<script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+		<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+		<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+		<link href="fonts/font.css" rel="stylesheet" media="screen" type="text/css" >
+	</head>
+<body class="body_main_content" >
+	<!--	CONTEUDO DO TOPO	-->
+	<div id="topoFixo">
+		<? echo $this->render('/includes/top.phtml'); ?>
+	</div>
+	<!--	CONTEUDO DO CONTEUDO	-->
+		<?php echo $this->layout()->content ?>				
+	<!--	CONTEUDO DO FOOTER		-->
+	 <? echo $this->render('/includes/footer.phtml'); ?>
+</body></html>

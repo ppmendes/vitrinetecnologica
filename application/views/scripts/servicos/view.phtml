@@ -1,0 +1,131 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".iframe").fancybox({
+		'width'				: '75%',
+		'height'			: '95%',
+		'autoScale'			: false,
+		'transitionIn'			: 'none',
+		'transitionOut'			: 'none',
+		'type'				: 'iframe'
+	});
+});
+</script>
+<?php $contatos = new Application_Model_Contatos;?>
+<section class="section_home" >
+		<section class="section_home_article" id="article_coluna1" style="" >
+			<hgroup>
+<!--Título do Artigo/Documento-->
+				<header class="section_header_" style="position:relative; float:none; margin-left:auto;
+				margin-right:auto; display:block; -webkit-box-shadow:rgba(0, 0, 0, 0.289063)
+				0px 1px 3px; box-shadow:rgba(0, 0, 0, 0.292969) 0px 1px 3px;
+				-o-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; -ms-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px;
+				-moz-box-shadow:rgba(0, 0, 0, 0.289063) 0px 1px 3px; border-top:1px solid rgba(0,183,254,0.50);
+				border-bottom:1px solid rgba(127,127,127,0.10); " >
+                <div id="titulo_text" style="position:relative; width:auto; height:auto; background-color:rgba(0,0,0,0.00); " >
+                <?php echo $this->servico['servico']['nome_laboratorio']; ?></div></header>
+	
+				<nav id="nav_lorem" >
+<!--Fase do Documento
+					<div id="nav_lorem_fase" >
+						<div class="nav_fase" id="nav_fase1" >Fase 1</div>
+						<div class="nav_fase" id="nav_fase2" >Fase 2</div>
+						<div class="nav_fase" id="nav_fase3" >Fase 3</div>
+						<div class="nav_fase" id="nav_fase4" >Fase 4</div>
+-->
+					</div>
+
+<!--Compartilhamento-->
+					<div id="nav_lorem_social" >
+
+                        <a href="contato/index/assunto/<?php echo base64_encode("[Serviço] ".$this->resumo($this->servico['servico']['nome_laboratorio'], 100)); ?>">
+                        <div style="background-image:url(imagem/icons/glyphicons_077_headset.png); " class="image_social" id="icone">
+                            <div id="descricao_hover">
+                                <p>Entre em Contato</p>
+                            </div>
+                        </div></a>
+
+                        <a class="iframe" href="email/index/id/<?php echo $this->servico['servico']['id']; ?>/tipo/servico" target="" name="" >
+                        <div style="background-image:url(imagem/icons/glyphicons_024_indicar.png); " class="image_social" id="icone">
+                            <div id="descricao_hover">
+                            <p>Enviar para um amigo</p>
+                            </div>
+                        </div></a>
+
+                        <!-- facebook -->
+                        <?php $urlEncurtada = $this->encurtador($this->ServerUrl().$this->url()); ?>
+                        <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo $urlEncurtada; ?>">
+                            <div style="background-image:url(imagem/icons/glyphicons_390_facebook.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Compartilhar via Facebook</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- twitter -->
+                        <a target="_blank" href="http://twitter.com/?status=<?php echo $urlEncurtada." "; ?>%23vitrinetecnologica" >
+                            <div style="background-image:url(imagem/icons/glyphicons_391_twitter_t.png); " class="image_social" id="icone">
+                                <div id="descricao_hover">
+                                    <p>Compartilhar via Twitter</p>
+                                </div>
+                        </div></a>
+
+
+                        <!-- Download do PDF -->
+                        <!-- <a href="index.html">
+                        <div style="background-image:url(imagem/icons/glyphicons_036_file.png); " class="image_social" id="icone">
+                            <div id="descricao_hover">
+                            <p>Faça o Download do Arquivo</p>
+                            </div>
+                        </div></a>-->
+
+                    </div>
+			</nav>
+<!--Figura da Página-->
+					<figure class="image_lorem" style="background-image:url(imagem/banner/banner4.jpg); " >
+
+					</figure>
+				</hgroup>
+<!--Artigo-->
+<article class="" id="texto_artigo" style="" >
+	<p><b>Descrição do Laboratório: </b><?php echo $this->servico['servico']['descricao_laboratorio']; ?></p>
+	
+	<p><b>Serviço: </b><?php echo $this->servico['tipos_servicos'][0]['tipo_servico']; ?></p>
+	<p><b>Descrição do Serviço: </b><?php echo $this->servico['tipos_servicos'][0]['tipo_servico_descricao']; ?></p>
+	<?php foreach($this->servico['pessoas'] as $pessoa): ?>
+
+
+		<p><b>Coordenador: </b><?php echo $pessoa['nome']; ?></p>
+
+		<p><b>Disque Tecnologia </b><br />
+		<?php
+			$contato = $contatos->contato('servicos_tecnologicos',0);
+			echo '<b>Email: </b>'.$contato['email'].' <b>Telefone: </b>'.$contato['telefone']. ' <b>Endereço: </b>'.$contato['endereco'];
+		?>
+		</p>
+
+	<?php endforeach; ?>
+</article>
+</section>
+
+<!--Campo de Últimas Notícias-->
+
+				<section id="section_news" ><header id="section_header_news" >
+
+
+				<div style="position:relative; width:auto; height:auto; margin-left:10px; " id="titulo_text" >Últimas Notícias</div></header>
+
+					<aside class="news_footer" id="news_footer_esquerda" 
+style="background-image:url('imagem/noticias/6.jpg'); " ><a href="noticias/view/id/6" target="" name="" ><header id="header_news" style="left:-1px; top:0; " >Professora transforma bituca em papel</header></a></aside>
+					<aside style="width:230px; height:170px; float:left; 
+background-image:url('imagem/noticias/11.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_esquerda" ><a href="noticias/view/id/11" target="" name="" ><header id="header_news" >Feijão-de-corda pode ser 'arma' contra câncer de mama, mostra pesquisa</header></a></aside>
+					<aside style="width:230px; height:170px; 
+background-image:url('imagem/news/news03.jpg'); border-bottom:1px solid #7F7F7F; " class="news_footer" id="news_footer_direita" ><a href="noticias/view/id/3" target="" name="" ><header id="header_news" >Software ajuda deficientes intelectuais a ler e usar internet</header></a></aside>
+					<aside class="news_footer" id="news_footer_direita" 
+style="background-image:url('imagem/noticias/7.jpg'); border-bottom:1px solid #7F7F7F; " >
+
+					<a href="noticias/view/id/7" target="" name="" ><header id="header_news" >Estudo sobre Chagas sugere mudança radical em tratamento</header></a></aside>
+				</section>
+		<div style="clear:both; " ></div>
+	</section>
+
+<div style="clear:both; " ></div>
