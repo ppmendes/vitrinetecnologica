@@ -71,8 +71,10 @@ class Application_Form_Solucoes extends Zend_Form
             'label'      => 'Oportunidades:',
             'multiOptions' => $OportunidadesArray,
             'decorators' => $this->elementDecorators,
-            'required'   => true
+            'required'   => true,
+            'separator' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|'
         ));
+
 
         $this->addElement($oportunidadesExistentes);
 
@@ -97,7 +99,8 @@ class Application_Form_Solucoes extends Zend_Form
             'label'      => 'Classificacoes:',
             'multiOptions' => $classificacoesArray,
             'decorators' => $this->elementDecorators,
-            'required'   => true
+            'required'   => true,
+            'separator' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|'
         ));
 
         $this->addElement($classificacoesExistentes);
@@ -133,7 +136,8 @@ class Application_Form_Solucoes extends Zend_Form
             'label'      => 'modalidadesProtecoes:',
             'multiOptions' => $modalidadesProtecoesArray,
             'decorators' => $this->elementDecorators,
-            'required'   => true
+            'required'   => true,
+            'separator' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|'
         ));
 
         $this->addElement($modalidadesProtecoesExistentes);
@@ -156,7 +160,8 @@ class Application_Form_Solucoes extends Zend_Form
             'label'      => 'Depositos:',
             'multiOptions' => $depositosArray,
             'decorators' => $this->elementDecorators,
-            'required'   => false
+            'required'   => false,
+            'separator' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|'
         ));
 
         $this->addElement($depositosExistentes);
@@ -183,11 +188,12 @@ class Application_Form_Solucoes extends Zend_Form
 
 
         $depositosExistentes = new Zend_Form_Element_MultiCheckbox('depositos2', array(
-            'label'      => 'Depositos Já Associados:',
+            'label'      => 'Depositos Associados:',
             'multiOptions' => $depositosArrayAssociados,
             'decorators' => $this->elementDecorators,
             'checked' => 'checked',
-            'required'   => false
+            'required'   => false,
+            'separator' => '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|'
         ));
 
         $this->addElement($depositosExistentes);
