@@ -237,9 +237,4 @@ class Application_Form_Solucoes extends Zend_Form
             'Form',
         ));
     }
-
-    public function fill()
-    {
-        $this->name->setValue( Zend_Controller_Front::getInstance()->getRequest()->getParam( 'id', null ) );
-    }
 }

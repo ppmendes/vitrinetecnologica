@@ -431,3 +431,13 @@ ul.menuTopo li a:hover {
     position: relative;
     top: 25px;
 }
+
+/* configuração do formulário de login */
+#senha {
+    position: relative;
+    bottom: 25px;
+}
+#usuario, #senha {
+    width: 200px;
+    height: 20px;
+}
