@@ -169,21 +169,21 @@ class Application_Form_Solucoes extends Zend_Form
         //id que é recebido via parâmetro
         $id = Zend_Controller_Front::getInstance()->getRequest()->getParam( 'id', null );
 
+        if($id != null)
+        {
+            //depositos que já foram associados
+            $depositosArrayAssociados = array();
+            foreach ($todosDepositos AS $row){
 
-        //depositos que já foram associados
-
-         $depositosArrayAssociados = array();
-        foreach ($todosDepositos AS $row){
-
-
-            if($row->solucoes_id == $id)
-            {
-                $depositosArrayAssociados[$row->id] = "número: ".$row->numero." data: ".$row->data;
+                if($row->solucoes_id == $id)
+                {
+                    $depositosArrayAssociados[$row->id] = "número: ".$row->numero." data: ".$row->data;
+                }
             }
-        }
+
 
         $depositosExistentes = new Zend_Form_Element_MultiCheckbox('depositos2', array(
-            'label'      => 'Depositos2:',
+            'label'      => 'Depositos Já Associados:',
             'multiOptions' => $depositosArrayAssociados,
             'decorators' => $this->elementDecorators,
             'checked' => 'checked',
@@ -191,6 +191,8 @@ class Application_Form_Solucoes extends Zend_Form
         ));
 
         $this->addElement($depositosExistentes);
+
+        }
 
 
 
