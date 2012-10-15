@@ -23,13 +23,17 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".iframe").fancybox({
-		'width'				: '75%',
-		'height'			: '77%',
-		'autoScale'			: false,
-		'transitionIn'			: 'none',
-		'transitionOut'			: 'none',
-		'type'				: 'iframe'
-	});
+        'width'				: 650,
+        'autoScale'			: false,
+        'transitionIn'			: 'none',
+        'transitionOut'			: 'none',
+        'type'				: 'iframe',
+        'onComplete' : function() {
+            $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+                $('#fancybox-content').height($(this).contents().find('body').height()+30);
+            });
+        }
+    });
 });
 </script>
 <!-- Modalidades  -->
