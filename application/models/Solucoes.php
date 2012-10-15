@@ -77,5 +77,12 @@ class Application_Model_Solucoes
         }
 
     }
+
+    public function getLastInsertedId(){
+
+        $db = Zend_Db_Table::getDefaultAdapter();
+        $result = $db->fetchOne("SELECT max(id) FROM solucoes_tecnologicas");
+        return (int)$result+1;
+    }
 }
 

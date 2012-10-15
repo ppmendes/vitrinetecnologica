@@ -99,12 +99,14 @@ $(document).ready(function() {
                             </div></a>
 
                         <!-- Download do PDF -->
-                        <a href="files/solucoes/<?php echo $this->solucao['solucao']['id']; ?>.pdf" >
+                        <?php if(file_exists('files/solucoes/'.$this->solucao['solucao']['id'].'.pdf')){ ?>
+                        <a target="_blank" href="files/solucoes/<?php echo $this->solucao['solucao']['id']; ?>.pdf" >
                             <div style="background-image:url(imagem/icons/glyphicons_036_file.png); " class="image_social" id="icone">
                                 <div id="descricao_hover">
                                     <p>Faça o Download do Arquivo</p>
                                 </div>
                         </div></a>
+                        <?php } ?>
 
                     </div>
 
@@ -112,7 +114,7 @@ $(document).ready(function() {
 
             <!--Figura da Página-->
             <?php if(file_exists('files/solucoes_imagens/'.$this->solucao['solucao']['id'].'.png')):?>
-            <figure class="image_lorem" style="background-image:url(<?php echo '/files/solucoes_imagens/'.$this->solucao['solucao']['id'].'.png'; ?>); " ></figure>
+            <figure class="image_lorem" style="background-image:url(<?php echo 'files/solucoes_imagens/'.$this->solucao['solucao']['id'].'.png'; ?>); " ></figure>
             <?php else: ?>
             <figure class="image_lorem" style="background-image:url(imagem/banner/banner4.jpg); " ></figure>
             <?php endif; ?>

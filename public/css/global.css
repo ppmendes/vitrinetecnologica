@@ -424,3 +424,10 @@ ul.menuTopo li a:hover {
 .article_contato {
     height: 380px;
 }
+
+/* configuração do formulário de inserção de soluções ( /solucoes/insert ) */
+
+.file {
+    position: relative;
+    top: 25px;
+}

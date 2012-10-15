@@ -9,7 +9,7 @@ class Application_Form_Solucoes extends Zend_Form
         array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'element')),
         array('Label', array('tag' => 'td')),
         array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
-        );
+    );
 
     public $buttonDecorators = array(
         'ViewHelper',
@@ -18,8 +18,18 @@ class Application_Form_Solucoes extends Zend_Form
         array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
     );
 
+    public $fileDecorators = array(
+        'File',
+        'Errors',
+        array(array('data' => 'HtmlTag'), array('tag' => 'td', 'class' => 'element')),
+        array('Label', array('tag' => 'td', 'class' => 'file')),
+        array(array('row' => 'HtmlTag'), array('tag' => 'tr'))
+    );
+
     public function init()
     {
+
+        $this->setAttrib('enctype', 'multipart/form-data');
 
         /* Initialize action controller here */
 
@@ -128,12 +138,14 @@ class Application_Form_Solucoes extends Zend_Form
 
         $this->addElement($modalidadesProtecoesExistentes);
 
-        //depositos
+        //depositos que ainda não foram associados
         $depositos = new Application_Model_DbTable_Depositos();
         $todosDepositos = $depositos->fetchAll();
 
         $depositosArray = array();
         foreach ($todosDepositos AS $row){
+
+
             if($row->solucoes_id == NULL)
             {
             $depositosArray[$row->id] = "número: ".$row->numero." data: ".$row->data;
@@ -148,6 +160,53 @@ class Application_Form_Solucoes extends Zend_Form
         ));
 
         $this->addElement($depositosExistentes);
+
+        //[..]
+        /*$id = new Zend_Form_Element_Hidden('name');
+        $this->addElement($id);
+        $this->fill();*/
+
+        //id que é recebido via parâmetro
+        $id = Zend_Controller_Front::getInstance()->getRequest()->getParam( 'id', null );
+
+
+        //depositos que já foram associados
+
+         $depositosArrayAssociados = array();
+        foreach ($todosDepositos AS $row){
+
+
+            if($row->solucoes_id == $id)
+            {
+                $depositosArrayAssociados[$row->id] = "número: ".$row->numero." data: ".$row->data;
+            }
+        }
+
+        $depositosExistentes = new Zend_Form_Element_MultiCheckbox('depositos2', array(
+            'label'      => 'Depositos2:',
+            'multiOptions' => $depositosArrayAssociados,
+            'decorators' => $this->elementDecorators,
+            'checked' => 'checked',
+            'required'   => false
+        ));
+
+        $this->addElement($depositosExistentes);
+
+
+
+        // PDF
+        $this->addElement('file', 'pdf', array(
+            'label'      => 'PDF:',
+            'decorators' => $this->fileDecorators
+            //'required'   => true
+        ));
+
+        // Imagem
+        $this->addElement('file', 'imagem', array(
+            'label'      => 'Imagem (PNG):',
+            'decorators' => $this->fileDecorators
+            //'required'   => true
+        ));
 
         // Add the submit button
         $this->addElement('submit', 'submit', array(
@@ -169,5 +228,10 @@ class Application_Form_Solucoes extends Zend_Form
             array('HtmlTag', array('tag' => 'table', 'class' => 'solucao_table')),
             'Form',
         ));
+    }
+
+    public function fill()
+    {
+        $this->name->setValue( Zend_Controller_Front::getInstance()->getRequest()->getParam( 'id', null ) );
     }
 }

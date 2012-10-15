@@ -101,7 +101,71 @@ class SolucoesController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost()))
             {
+
+                /* Uploading Document File on Server */
+                $upload = new Zend_File_Transfer_Adapter_Http();
+                $upload->addFilter('Rename', 'files/');
+
+                try {
+                    // upload received file(s)
+                    $upload->receive();
+                } catch (Zend_File_Transfer_Exception $e) {
+                    $e->getMessage();
+                }
+
+                if(isset($id))
+                {
+                    $idFiles = $id;
+                    echo "nome do arquivo ".$idFiles;
+                }
+                else
+                {
+                    $Solucoes_Model = new Application_Model_Solucoes();
+                    $lastId= $Solucoes_Model->getLastInsertedId();
+                    $idFiles = $lastId;
+                    echo "nome do arquivo ".$idFiles;
+                }
+
                 $solucoesform = $form->getValues();
+
+                if($solucoesform['pdf'] !=  null )
+                {
+                $filePdf = $upload->getFileName('pdf');
+                //pdf
+                $fullFilePathPdf = 'files/solucoes/'.$idFiles.'.pdf';
+                $filterFileRename = new Zend_Filter_File_Rename(array('target' => $fullFilePathPdf, 'overwrite' => true));
+                $filterFileRename -> filter($filePdf);
+
+                }
+
+                if($solucoesform['imagem'] !=  null )
+                {
+                    $fileImage = $upload->getFileName('imagem');
+                    //image
+                    $fullFilePathImage = 'files/solucoes_imagens/'.$idFiles.'.png';
+                    $filterFileRename = new Zend_Filter_File_Rename(array('target' => $fullFilePathImage, 'overwrite' => true));
+                    $filterFileRename -> filter($fileImage);
+                }
+
+                //tirando os campos file que vem junto pra evitar conflito na hora de gravar
+                $idsDepositos = $solucoesform['depositos'];
+                $idsDepositos2 = $solucoesform['depositos2'];
+
+                if($idsDepositos != null){
+                    $idsDepositos = array_merge($idsDepositos, $idsDepositos2);
+                }
+                else if($idsDepositos == null){
+                    $idsDepositos = $idsDepositos2;
+                }
+
+
+                //arquivos
+                unset($solucoesform['pdf']);
+                unset($solucoesform['imagem']);
+
+                //depositos associados e ainda não
+                unset($solucoesform['depositos2']);
+                unset($solucoesform['depositos']);
 
                 $palavrasChaves = $solucoesform['palavras_chaves'];
                 unset($solucoesform['palavras_chaves']);
@@ -116,24 +180,11 @@ class SolucoesController extends Zend_Controller_Action
                 $modalidadesProtecoes = $solucoesform['modalidadesProtecoes'];
                 unset($solucoesform['modalidadesProtecoes']);
 
-                $idsDepositos = $solucoesform['depositos'];
-                unset($solucoesform['depositos']);
+                Zend_Debug::dump($solucoesform, 'Form Data:');
 
                 if(isset($id)){
+
                     $solucoesModel->update($solucoesform,$id);
-
-                    //salvando as palavras-chaves relacionadas a solução
-                    //retorna um array com os últimos ids inseridos
-                    //$ultimoIdsInseridoPalavrasChaves = $palavrasChavesModel->insert($palavrasChaves);
-
-                    //associando as palavras-chaves a solução
-                    //foreach($ultimoIdsInseridoPalavrasChaves as  $valorUltimoIdInseridoPalavrasChaves)
-                    //{
-                    //     $associacoesSolucaoPalavrasChavesModel->insert($valorUltimoIdInseridoPalavrasChaves, 'solucoes_tecnologicas', $ultimoIdInseridoSolucoes);
-                    //}
-
-                    //salvando as oportunidades relacionadas a solução
-                    //retorna um array com os últimos ids inseridos
 
                     $oportunidadesModel->update($id, $idsOportunidades);
 
@@ -234,6 +285,9 @@ class SolucoesController extends Zend_Controller_Action
     public function deleteAction(){
         $id = $this->_getParam('id');
         if(isset($id)){
+            @unlink('files/solucoes/'.$id.'.pdf');
+            @unlink('files/solucoes_imagens/'.$id.'.png');
+
             $solucoesModel = new Application_Model_Solucoes();
             $solucoesModel->delete($id);
         }
