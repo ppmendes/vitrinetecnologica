@@ -21,8 +21,8 @@ class EmailController extends Zend_Controller_Action
 				    <table width="575" cellspacing="0" cellpadding="0" border="0" align="center">
 					<tbody><tr>
 					    <td height="61" background="" align="left">
-						<a title="Vitrine Tecnol&oacute;gica" href="http://actgitt.redessociaisonline.com/" target="_blank">
-						    <img border="0" title="G1" alt="Vitrine Tecnol&oacute;gica" src="http://actgitt.redessociaisonline.com/imagem/logo.png">
+						<a title="Vitrine Tecnol&oacute;gica" href="http://www.cdt.unb.br/vitrinetecnologica/" target="_blank">
+						    <img border="0" title="G1" alt="Vitrine Tecnol&oacute;gica" src="http://www.cdt.unb.br/vitrinetecnologica/imagem/logo.png">
 						</a>
 					    </td>
 					</tr>
@@ -30,8 +30,8 @@ class EmailController extends Zend_Controller_Action
 					    <td align="center">
 						<table width="550" cellpadding="0" border="0">
 						    <tbody>
-						
-						    
+
+
 						    <tr>
 						        <td>
 						            <br>
@@ -62,21 +62,27 @@ class EmailController extends Zend_Controller_Action
 				</td>
 			    </tr>
 			</tbody></table>';
-		return $mensagem;	
+		return $mensagem;
 	}
 
 	private function enviarEmail($from,$to,$subject,$message){
+		try{
+	        $mailTransport = new Zend_Mail_Transport_Smtp( "10.10.10.2" );
+	        Zend_Mail::setDefaultTransport($mailTransport);
 
-        $mailTransport = new Zend_Mail_Transport_Sendmail('-r'.'ouvidoria@redessociaisonline.com');
-        Zend_Mail::setDefaultTransport($mailTransport);
+	        $mail = new Zend_Mail();
+	        $mail->setBodyHtml($message);
+	        $mail->setFrom($from[0], $from[1]);
+	        $mail->addTo($to[0], $to[1]);
+	        $mail->setSubject($subject);
+	        $mail->setReturnPath("vitrinetecnologica@cdt.unb.br");
+	        $mail->setReplyTo($from[0],$from[1]);
+	        $mail->send();
 
-        $mail = new Zend_Mail();
-        $mail->setBodyHtml($message);
-        $mail->setFrom($from[0], $from[1]);
-        $mail->addTo($to[0], $to[1]);
-
-        $mail->setSubject($subject);
-        $mail->send();
+        }
+        catch(Exception $e){
+        	Zend_Debug::dump($e);
+        }
 	}
 
 	public function indexAction()
@@ -87,13 +93,13 @@ class EmailController extends Zend_Controller_Action
 		$assunto = utf8_decode('Vitrine Tecnológica');
 		if($tipo == 'solucao'){
 			//Solução
-			
+
 			$db = new Application_Model_Solucoes;
 			$resultado = $db->find($id);
 			$titulo = utf8_decode($resultado['solucao']['nome']);
 			$resumo = utf8_decode($resultado['solucao']['descricao_problema']);
-			$link = 'http://vitrinetecnologica.com/solucoes/view/id/';
-			
+			$link = 'http://www.cdt.unb.br/vitrinetecnologica/solucoes/view/id/';
+
 		} else if($tipo == 'servico'){
 			//Serviço
 
@@ -101,18 +107,18 @@ class EmailController extends Zend_Controller_Action
 			$resultado = $db->find($id);
 			$titulo = utf8_decode($resultado['servico']['nome_laboratorio']);
 			$resumo = utf8_decode($resultado['servico']['descricao_laboratorio']);
-			$link = 'http://vitrinetecnologica.com/servicos/view/id/';
+			$link = 'http://www.cdt.unb.br/vitrinetecnologica/servicos/view/id/';
 
 		}
         else if($tipo == 'noticia'){
 			//Noticia
-			
+
 			$db = new Application_Model_Noticias;
 			$resultado = $db->find($id);
 			$titulo = utf8_decode($resultado['nome']);
 			$resumo = utf8_decode($db->resumo($resultado['descricao']));
-			$link = 'http://vitrinetecnologica.com/noticias/view/id/';
-			
+			$link = 'http://www.cdt.unb.br/vitrinetecnologica/noticias/view/id/';
+
 		}
 
 		$mensagem = $this->gerarMensagem($id,$titulo,$resumo,$link);
@@ -123,8 +129,9 @@ class EmailController extends Zend_Controller_Action
    		echo "&nbsp;";
     		if ($this->getRequest()->isPost()) {
         		if ($form->isValid($request->getPost())){
-            			$emailForm = $form->getValues();
-				$this->enviarEmail(array($emailForm['nome'],$emailForm['from']),array($emailForm['to'],$emailForm['to']),$assunto,$mensagem);
+        			$emailForm = $form->getValues();
+					$this->enviarEmail(array($emailForm['from'],$emailForm['nome']),array($emailForm['to'],$emailForm['to']),$assunto,$mensagem);
+					echo "<script>parent.jQuery.fancybox.close();</script>";
 			}
 		}
 		$this->view->form = $form;
